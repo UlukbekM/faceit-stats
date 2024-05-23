@@ -83,7 +83,7 @@ export default function Stats({stats}:HeaderProps) {
     
         setAvgKD(parseFloat((totalKD/itemCount).toFixed(2)))
         setAvgKR(parseFloat((totalKR/itemCount).toFixed(2)))
-        setAvgWin((totalWin/itemCount)*100)
+        setAvgWin(Math.round((totalWin/itemCount)*100))
         setAvgHS(Math.round(totalHS / itemCount))
         setAvgKills(Math.round(totalKills / itemCount))
     }
@@ -139,7 +139,7 @@ export default function Stats({stats}:HeaderProps) {
                     </div>
                 </div>
                 
-                <div className="rounded-xl border bg-card text-card-foreground shadow flex flex-col justify-center">
+                <div className="rounded-xl border bg-card text-card-foreground shadow flex flex-col justify-center col-span-2 lg:col-span-1">
                     <div className='p-6 flex flex-row items-center justify-between space-y-0 pb-2'>
                         Average K/R
                     </div>

@@ -46,11 +46,11 @@ export default async function Page() {
     let username = ""
     let player_id = ""
     if(pathname) {
-        username = pathname.slice(1)
+        username = pathname.slice(9)
     }
 
     const data = await getData(username);
-    if(data.player_id) {
+    if(data && data.player_id) {
         player_id = data.player_id
     }
 
@@ -64,7 +64,7 @@ export default async function Page() {
                     <History stats={statsData}/>
                 </div>
             : 
-                <div className='grid place-items-center h-screen'>
+                <div className='grid place-items-center h-screen w-full'>
                     <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight my-auto mx-4">
                         Player not found
                     </h2>

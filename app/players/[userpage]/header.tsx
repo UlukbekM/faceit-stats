@@ -28,7 +28,6 @@ interface Stats {
     'Best Of': string;
     Rounds: string;
     Game: string;
-    'Second Half Score': string;
     Headshots: string;
     Kills: string;
     Assists: string;
@@ -54,6 +53,7 @@ interface Stats {
     'Final Score': string;
     Region: string;
     'Updated At': string;
+    'Second Half Score': string;
 }
 
 interface Item {
@@ -97,17 +97,15 @@ const eloRanges: [number, number][] = [
 
 export default function Header ({data,stats}:HeaderProps) {
     const pathname = usePathname()
-    const username = pathname.slice(1)
+    const username = pathname.slice(9)
 
     const [elo, setElo] = useState<number>(1)
     const [level, setLevel] = useState<number>(1)
-    const [avatar, setAvatar] = useState<string>("https://pbs.twimg.com/media/GMq5xZjWcAAXXsM?format=jpg&name=small")
     const [progress, setProgress] = useState<number>(1)
     const [rangeStart,setRangeStart] = useState<number>(0)
     const [rangeEnd,setRangeEnd] = useState<number>(0)
 
     useEffect(() => {
-        setAvatar(data.avatar)
         if(data.games?.cs2 && data.games.cs2.faceit_elo) {
             let tempElo = data.games.cs2.faceit_elo
             calculateLevel(tempElo)
@@ -183,12 +181,12 @@ export default function Header ({data,stats}:HeaderProps) {
     }
 
     return (
-        <div className='flex flex-col rounded-lg border w-full md:w-3/4 justify-center m-10 p-5 space-y-8'>
+        <div className='flex flex-col rounded-lg border w-full md:w-5/6 justify-center md:m-10 p-5 space-y-8'>
             <div className='flex flex-col md:flex-row md:justify-between space-y-4'>
                 <div className='flex items-center justify-center flex-col md:flex-row'>
                     <Avatar className='h-24 w-24 m-4'>
-                        <AvatarImage src={avatar} />
-                        <AvatarFallback>User</AvatarFallback>
+                        <AvatarImage src={data.avatar || "https://faceitfinder.com/themes/dark/images/faceit_avatar.jpg"} />
+                        <AvatarFallback>{data.nickname[0]}</AvatarFallback>
                     </Avatar>
                     <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
                         {username}
@@ -211,7 +209,7 @@ export default function Header ({data,stats}:HeaderProps) {
                             </div>
                         </div>
                         <div className='flex flex-col justify-center mx-4 w-64'>
-                            <div className='w-full'>
+                            <div className='w-full my-1'>
                                 <Progress value={progress}/>
                             </div>
                             <div className='flex justify-between'>

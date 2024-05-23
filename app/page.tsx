@@ -11,7 +11,7 @@ export default function Home() {
     const [input,setInput] = useState<string>("")
 
     const submitButton = () => {
-        router.push(input)
+        router.push(`/players/${input}`)
     }
 
 

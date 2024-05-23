@@ -57,7 +57,7 @@ interface Data {
 
 export default function History({stats}:HeaderProps) {
     return (
-        <div className="flex flex-col m-5 space-y-6 justify-center rounded-lg border w-full md:w-3/4">
+        <div className="flex flex-col m-5 space-y-6 justify-center rounded-lg border w-full md:w-5/6">
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -68,7 +68,6 @@ export default function History({stats}:HeaderProps) {
                         <TableHead className="text-center">K/A/D</TableHead>
                         <TableHead className="text-center">Headshots</TableHead>
                         <TableHead className="text-center">Rating</TableHead>
-                        {/* <TableHead className="text-right">ELO</TableHead> */}
                     </TableRow>
                 </TableHeader>
                 <TableBody>

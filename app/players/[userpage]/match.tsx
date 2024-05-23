@@ -4,6 +4,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation';
 
 interface Stats { 
     Team: string;
@@ -61,10 +62,21 @@ const cs2Maps: Record<string, string> = {
 };
 
 export default function Match({data}:MatchProps) {
+    const router = useRouter()
     const [matchDate, setMatchDate] = useState<string>("")
     const [map,setMap] = useState<string>("")
+    const [kd,setKd] = useState<string>("")
+
     useEffect(() => {
-        console.log(data)
+        // console.log(data)
+        if(data["K/D Ratio"].length == 1) {
+            setKd(data["K/D Ratio"]+".00")
+        } else if (data["K/D Ratio"].length == 3) {
+            setKd(data["K/D Ratio"]+"0")
+        }
+        else {
+            setKd(data["K/D Ratio"])
+        }
         formatDate()
         let tempMap = data.Map.slice(3)
         let newMap = tempMap.charAt(0).toUpperCase() + tempMap.slice(1)
@@ -75,17 +87,26 @@ export default function Match({data}:MatchProps) {
         let matchDate = new Date(data["Created At"])
         let date = matchDate.getDate()
         let month = matchDate.getMonth()
-        let hours:string = String(matchDate.getHours())
-        if(hours === "0"){
-            hours = "00"
+        let hours = String(matchDate.getHours())
+        if(hours.length === 1){
+            hours = "0" + hours
         } 
-        let minutes = matchDate.getMinutes()
+        let minutes = String(matchDate.getMinutes())
+        if(minutes.length === 1) {
+            minutes += "0"
+        }
 
         setMatchDate(date+" "+months[month]+" - "+hours+":"+minutes)
     }
 
+    const gotoMatch = () => {
+        if(data["Match Id"]) {
+            router.push(`/matches/${data["Match Id"]}`)
+        }
+    }
+
     return (
-        <TableRow className="">
+        <TableRow className="cursor-pointer" onClick={gotoMatch}>
             <TableCell className="text-center ">
                 {matchDate}
             </TableCell>
@@ -106,7 +127,12 @@ export default function Match({data}:MatchProps) {
                 <img src={`${cs2Maps[data.Map]}`} className="max-w-24 rounded-sm"/>
             </TableCell>
 
-            <TableCell className={`text-center ${parseInt(data.Kills) > parseInt(data.Deaths) ? "text-green-500" : "text-red-500"}`}>
+            <TableCell className={`text-center 
+                ${parseInt(data.Kills) > parseInt(data.Deaths) && "text-green-500"} 
+                ${parseInt(data.Kills) < parseInt(data.Deaths) && "text-red-500"} 
+                `}>
+                    {/* 
+                ${parseInt(data.Kills) === parseInt(data.Deaths) && "text-gray-400"} */}
                 {data.Kills}/{data.Assists}/{data.Deaths}
             </TableCell>
 
@@ -115,7 +141,7 @@ export default function Match({data}:MatchProps) {
             </TableCell>
 
             <TableCell className="text-center">
-                {data["K/D Ratio"] === "1" ? "1.00":data["K/D Ratio"]}
+                {kd}
             </TableCell>
         </TableRow>
     );
