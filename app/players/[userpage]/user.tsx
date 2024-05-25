@@ -95,7 +95,7 @@ const eloRanges: [number, number][] = [
     [2001,0],
 ];
 
-export default function Header ({data,stats}:HeaderProps) {
+export default function User ({data,stats}:HeaderProps) {
     const pathname = usePathname()
     const username = pathname.slice(9)
 
@@ -181,7 +181,7 @@ export default function Header ({data,stats}:HeaderProps) {
     }
 
     return (
-        <div className='flex flex-col rounded-lg border w-full md:w-5/6 justify-center md:m-10 p-5 space-y-8'>
+        <div className='flex flex-col rounded-lg border w-full md:w-5/6 justify-center md:m-5 p-5 space-y-8'>
             <div className='flex flex-col md:flex-row md:justify-between space-y-4'>
                 <div className='flex items-center justify-center flex-col md:flex-row'>
                     <Avatar className='h-24 w-24 m-4'>

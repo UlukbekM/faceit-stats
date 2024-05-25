@@ -1,7 +1,8 @@
 import { headers } from 'next/headers'
-import Header from "./header";
+import User from "./user";
 import History from './history';
 const apiKey = process.env.NEXT_PUBLIC_FACEIT_SERVER_API_KEY
+import Header from '@/app/header';
 
 async function getData(username:String) {
     try {
@@ -59,9 +60,12 @@ export default async function Page() {
         return (
         <div className="bg-background flex ">
             {data ? 
-                <div className='w-full flex flex-col items-center'>
-                    <Header data={data} stats={statsData}/> 
-                    <History stats={statsData}/>
+                <div className='flex flex-col w-full'>
+                    <Header/>
+                    <div className='flex flex-col items-center'>
+                        <User data={data} stats={statsData}/> 
+                        <History stats={statsData}/>
+                    </div>
                 </div>
             : 
                 <div className='grid place-items-center h-screen w-full'>

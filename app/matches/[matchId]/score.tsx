@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { HeaderProps } from './interfaces';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-export default function Header ({data,stats}:HeaderProps) {
+export default function Score ({data,stats}:HeaderProps) {
     const [faction1Score, setFaction1Score] = useState<string>("N/A")
     const [faction2Score, setFaction2Score] = useState<string>("N/A")
     const [faction1Img,setFaction1Img] = useState<string>(data.teams.faction1.avatar)
