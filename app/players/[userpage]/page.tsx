@@ -54,6 +54,7 @@ export default async function Page() {
     if(data && data.player_id) {
         player_id = data.player_id
     }
+    console.log(player_id)
 
     const statsData = await getStats(player_id)
 

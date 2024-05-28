@@ -9,7 +9,7 @@ export default function Ulu () {
     }
     
     return(
-        <div className='cursor-pointer text-primary transition-colors hover:text-foreground' onClick={submitButton}>
+        <div className='cursor-pointer transition-colors text-primary hover:text-faceit' onClick={submitButton}>
             ulu's
         </div>
     )

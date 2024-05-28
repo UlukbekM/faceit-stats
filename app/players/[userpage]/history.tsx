@@ -65,9 +65,9 @@ export default function History({stats}:HeaderProps) {
                         <TableHead className="text-center">Result</TableHead>
                         <TableHead className="text-center">Score</TableHead>
                         <TableHead className="text-center">Map</TableHead>
-                        <TableHead className="text-center">K/A/D</TableHead>
+                        <TableHead className="text-center">K/D/A</TableHead>
                         <TableHead className="text-center">Headshots</TableHead>
-                        <TableHead className="text-center">Rating</TableHead>
+                        <TableHead className="text-center">K/D</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>

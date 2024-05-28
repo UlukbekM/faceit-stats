@@ -130,10 +130,11 @@ export default function Match({data}:MatchProps) {
             <TableCell className={`text-center 
                 ${parseInt(data.Kills) > parseInt(data.Deaths) && "text-green-500"} 
                 ${parseInt(data.Kills) < parseInt(data.Deaths) && "text-red-500"} 
+                ${parseInt(data.Kills) === parseInt(data.Deaths) && "text-gray-300"}
                 `}>
                     {/* 
                 ${parseInt(data.Kills) === parseInt(data.Deaths) && "text-gray-400"} */}
-                {data.Kills}/{data.Assists}/{data.Deaths}
+                {data.Kills}/{data.Deaths}/{data.Assists}
             </TableCell>
 
             <TableCell className="text-center">

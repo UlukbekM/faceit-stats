@@ -23,6 +23,10 @@ const config = {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       colors: {
+        faceit: {
+            DEFAULT: "hsl(var(--faceit))",
+            foreground: "hsl(var(--faceit-foreground))",
+          },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
