@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google"
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { Analytics } from "@vercel/analytics/react"
 import "./globals.css";
 
 import { cn } from "@/lib/utils"
@@ -30,6 +31,7 @@ export default function RootLayout({
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange>
+                <Analytics/>
                 {children}
             </ThemeProvider></body>
     </html>
