@@ -152,10 +152,24 @@ export function PlayerScoreboard({stats,avatar}:RosterInfo) {
                 </Popover> */}
             </TableCell>
             <TableCell className="text-center">{stats.player_stats.Kills}</TableCell>
-            <TableCell className="text-center">{stats.player_stats.Assists}</TableCell>
             <TableCell className="text-center">{stats.player_stats.Deaths}</TableCell>
-            <TableCell className="text-center">{stats.player_stats["K/D Ratio"]}</TableCell>
-            <TableCell className="text-center">{stats.player_stats["K/R Ratio"]}</TableCell>
+            <TableCell className="text-center">{stats.player_stats.Assists}</TableCell>
+            <TableCell className="text-center">
+                {stats.player_stats["K/D Ratio"].length === 1 
+                    ? stats.player_stats["K/D Ratio"]+".00"
+                    : stats.player_stats["K/D Ratio"].length === 3 
+                    ? stats.player_stats["K/D Ratio"]+"0"
+                    : stats.player_stats["K/D Ratio"]
+                }
+            </TableCell>
+            <TableCell className="text-center">
+                {stats.player_stats["K/R Ratio"].length === 1 
+                    ? stats.player_stats["K/R Ratio"]+".00"
+                    : stats.player_stats["K/R Ratio"].length === 3 
+                    ? stats.player_stats["K/R Ratio"]+"0"
+                    : stats.player_stats["K/R Ratio"]
+                }    
+            </TableCell>
             <TableCell className="text-center">{stats.player_stats.Headshots}</TableCell>
             <TableCell className="text-center">{stats.player_stats["Headshots %"]}</TableCell>
             <TableCell className="text-center">{stats.player_stats.MVPs}</TableCell>

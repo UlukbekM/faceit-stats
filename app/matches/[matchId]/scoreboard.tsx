@@ -157,24 +157,24 @@ export default function Scoreboard ({data,stats}:HeaderProps) {
                                 <Button
                                 size={"sm"}
                                 variant="ghost"
-                                onClick={() => sortTableHeader(1,"Assists")}
+                                onClick={() => sortTableHeader(1,"Deaths")}
                                 >
-                                Assists
-                                {sorting1[0] === "Assists" ?
+                                Deaths
+                                {sorting1[0] === "Deaths" ?
                                     sorting1[1] === "asc" ? <MoveDown className="ml-2 h-4 w-4"  /> : <MoveUp className="ml-2 h-4 w-4"  /> 
                                     :
                                     <ArrowUpDown className="ml-2 h-4 w-4 opacity-0" />
                                 }
                                 </Button>
-                                </TableHead>
+                            </TableHead>
                             <TableHead className='text-center'>
                                 <Button
                                 size={"sm"}
                                 variant="ghost"
-                                onClick={() => sortTableHeader(1,"Deaths")}
+                                onClick={() => sortTableHeader(1,"Assists")}
                                 >
-                                Deaths
-                                {sorting1[0] === "Deaths" ?
+                                Assists
+                                {sorting1[0] === "Assists" ?
                                     sorting1[1] === "asc" ? <MoveDown className="ml-2 h-4 w-4"  /> : <MoveUp className="ml-2 h-4 w-4"  /> 
                                     :
                                     <ArrowUpDown className="ml-2 h-4 w-4 opacity-0" />
@@ -345,24 +345,24 @@ export default function Scoreboard ({data,stats}:HeaderProps) {
                                 <Button
                                 size={"sm"}
                                 variant="ghost"
-                                onClick={() => sortTableHeader(2,"Assists")}
+                                onClick={() => sortTableHeader(2,"Deaths")}
                                 >
-                                Assists
-                                {sorting2[0] === "Assists" ?
+                                Deaths
+                                {sorting2[0] === "Deaths" ?
                                     sorting2[1] === "asc" ? <MoveDown className="ml-2 h-4 w-4"  /> : <MoveUp className="ml-2 h-4 w-4"  /> 
                                     :
                                     <ArrowUpDown className="ml-2 h-4 w-4 opacity-0" />
                                 }
                                 </Button>
-                                </TableHead>
+                            </TableHead>
                             <TableHead className='text-center'>
                                 <Button
                                 size={"sm"}
                                 variant="ghost"
-                                onClick={() => sortTableHeader(2,"Deaths")}
+                                onClick={() => sortTableHeader(2,"Assists")}
                                 >
-                                Deaths
-                                {sorting2[0] === "Deaths" ?
+                                Assists
+                                {sorting2[0] === "Assists" ?
                                     sorting2[1] === "asc" ? <MoveDown className="ml-2 h-4 w-4"  /> : <MoveUp className="ml-2 h-4 w-4"  /> 
                                     :
                                     <ArrowUpDown className="ml-2 h-4 w-4 opacity-0" />
