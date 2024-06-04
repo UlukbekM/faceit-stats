@@ -5,45 +5,7 @@ import {
 } from "@/components/ui/table"
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
-
-interface Stats { 
-    Team: string;
-    'K/D Ratio': string;
-    'K/R Ratio': string;
-    'Best Of': string;
-    Rounds: string;
-    Game: string;
-    'Second Half Score': string;
-    Headshots: string;
-    Kills: string;
-    Assists: string;
-    'Competition Id': string;
-    'Triple Kills': string;
-    Winner: string;
-    'Player Id': string;
-    'First Half Score': string;
-    Map: string;
-    Deaths: string;
-    'Headshots %': string;
-    'Overtime score': string;
-    'Quadro Kills': string;
-    'Penta Kills': string;
-    'Game Mode': string;
-    Score: string;
-    'Match Round': string;
-    MVPs: string;
-    'Match Id': string;
-    'Created At': string;
-    Nickname: string;
-    Result: string;
-    'Final Score': string;
-    Region: string;
-    'Updated At': string;
-}
-
-interface MatchProps {
-    data: Stats;
-}
+import { DataProps } from "./interface";
 
 const months = [
     "January", "February", "March", "April", "May", "June", 
@@ -61,7 +23,7 @@ const cs2Maps: Record<string, string> = {
     "de_overpass": "https://assets.faceit-cdn.net/third_party/games/ce652bd4-0abb-4c90-9936-1133965ca38b/assets/votables/058c4eb3-dac4-441c-a810-70afa0f3022c_1695819170133.jpeg",
 };
 
-export default function Match({data}:MatchProps) {
+export default function Match({data}:DataProps) {
     const router = useRouter()
     const [matchDate, setMatchDate] = useState<string>("")
     const [map,setMap] = useState<string>("")

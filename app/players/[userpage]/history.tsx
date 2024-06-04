@@ -2,62 +2,16 @@ import Match from "./match";
 import {
     Table,
     TableBody,
-    TableCaption,
     TableHead,
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { StatsProps } from "./interface";
 
-interface HeaderProps {
-    stats: Data;
-}
-
-interface Stats {
-    Team: string;
-    'K/D Ratio': string;
-    'K/R Ratio': string;
-    'Best Of': string;
-    Rounds: string;
-    Game: string;
-    'Second Half Score': string;
-    Headshots: string;
-    Kills: string;
-    Assists: string;
-    'Competition Id': string;
-    'Triple Kills': string;
-    Winner: string;
-    'Player Id': string;
-    'First Half Score': string;
-    Map: string;
-    Deaths: string;
-    'Headshots %': string;
-    'Overtime score': string;
-    'Quadro Kills': string;
-    'Penta Kills': string;
-    'Game Mode': string;
-    Score: string;
-    'Match Round': string;
-    MVPs: string;
-    'Match Id': string;
-    'Created At': string;
-    Nickname: string;
-    Result: string;
-    'Final Score': string;
-    Region: string;
-    'Updated At': string;
-}
-
-interface Item {
-    stats: Stats;
-}
-
-interface Data {
-    items: Item[];
-}
-
-export default function History({stats}:HeaderProps) {
+export default function History({stats}:StatsProps) {
     return (
         <div className="flex flex-col m-5 space-y-6 justify-center rounded-lg border w-full md:w-5/6">
+            {/* <div className="mx-5 my-3 text-2xl font-semibold text-center">Match History</div> */}
             <Table>
                 <TableHeader>
                     <TableRow>

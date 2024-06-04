@@ -3,70 +3,10 @@ import { useState, useEffect } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Progress } from "@/components/ui/progress"
 import Stats from './stats';
+import Maps from './maps';
+import { HeaderProps } from './interface';
 import { usePathname } from 'next/navigation'
 
-interface HeaderProps {
-    data: UserInfo;
-    stats: Data;
-}
-
-interface UserInfo {
-    avatar: string,
-    nickname: string,
-    games?: {
-        cs2?: {
-            faceit_elo?: number;
-        };
-    },
-    player_id: string
-}
-
-interface Stats {
-    Team: string;
-    'K/D Ratio': string;
-    'K/R Ratio': string;
-    'Best Of': string;
-    Rounds: string;
-    Game: string;
-    Headshots: string;
-    Kills: string;
-    Assists: string;
-    'Competition Id': string;
-    'Triple Kills': string;
-    Winner: string;
-    'Player Id': string;
-    'First Half Score': string;
-    Map: string;
-    Deaths: string;
-    'Headshots %': string;
-    'Overtime score': string;
-    'Quadro Kills': string;
-    'Penta Kills': string;
-    'Game Mode': string;
-    Score: string;
-    'Match Round': string;
-    MVPs: string;
-    'Match Id': string;
-    'Created At': string;
-    Nickname: string;
-    Result: string;
-    'Final Score': string;
-    Region: string;
-    'Updated At': string;
-    'Second Half Score': string;
-}
-
-interface Item {
-    stats: Stats;
-}
-
-interface Data {
-    items: Item[];
-}
-
-
-// https://support.faceit.com/hc/en-us/articles/10525200579740-FACEIT-CS2-Elo-and-skill-levels
-// https://tracker.gg/valorant/premier/teams/8a61fb9d-a1f4-4a2f-b8a9-52e2e60856d6
 
 const eloImageMapping: Record<number, string> = {
     10: "https://support.faceit.com/hc/article_attachments/10525189646876",
@@ -104,6 +44,7 @@ export default function User ({data,stats}:HeaderProps) {
     const [progress, setProgress] = useState<number>(1)
     const [rangeStart,setRangeStart] = useState<number>(0)
     const [rangeEnd,setRangeEnd] = useState<number>(0)
+    const [avatar, setAvatar] = useState<string>(data.avatar)
 
     useEffect(() => {
         if(data.games?.cs2 && data.games.cs2.faceit_elo) {
@@ -112,7 +53,26 @@ export default function User ({data,stats}:HeaderProps) {
             setElo(tempElo)
             calculateRangeProgress(tempElo, eloRanges)
         }
+
+        if (data.avatar) {
+            imageCheck(data.avatar).then((isValid) => {
+                if (!isValid) {
+                    setAvatar("https://faceitfinder.com/themes/dark/images/faceit_avatar.jpg");
+                }
+            });
+        } else {
+            setAvatar("https://faceitfinder.com/themes/dark/images/faceit_avatar.jpg");
+        }
     }, [])
+
+    const imageCheck = (avatar:string) => {
+        const img = new Image();
+        img.src = avatar;
+        return new Promise((resolve) => {
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+        });
+    }
 
     const calculateLevel = (elo:number) => {
         if(elo > 2000) {
@@ -181,11 +141,11 @@ export default function User ({data,stats}:HeaderProps) {
     }
 
     return (
-        <div className='flex flex-col rounded-lg border w-full md:w-5/6 justify-center md:m-5 p-5 space-y-8'>
+        <div className='flex flex-col md:rounded-lg border-b md:border w-full md:w-5/6 justify-center md:m-5 p-5 space-y-8'>
             <div className='flex flex-col md:flex-row md:justify-between space-y-4'>
                 <div className='flex items-center justify-center flex-col md:flex-row'>
                     <Avatar className='h-24 w-24 m-4'>
-                        <AvatarImage src={data.avatar || "https://faceitfinder.com/themes/dark/images/faceit_avatar.jpg"} />
+                        <AvatarImage src={avatar} />
                         <AvatarFallback>{data.nickname[0]}</AvatarFallback>
                     </Avatar>
                     <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
@@ -228,6 +188,7 @@ export default function User ({data,stats}:HeaderProps) {
                 </div>
             </div>
             <Stats stats={stats}/>
+            <Maps stats={stats}/> 
         </div>
     );
 }

@@ -19,7 +19,7 @@ export default function Header () {
 
     return(
         <div className='flex justify-center mb-5'>
-            <div className="flex justify-between p-4 border-b border-r border-l md:w-5/6 rounded-b-lg">
+            <div className="flex justify-between p-4 border-b border-r border-l w-full md:w-5/6 md:rounded-b-lg">
                 {/* <div className='my-auto transition-colors hover:text-primary cursor-pointer text-2xl font-bold text-center ' onClick={goHome}> */}
                 <div className='my-auto transition-colors cursor-pointer text-2xl font-bold text-center text-primary hover:text-faceit' onClick={goHome}>
                     {/* bg-primary text-primary-foreground hover:bg-primary/90 */}

@@ -1,55 +1,10 @@
 "use client"
 import { useState, useEffect } from 'react';
-
-interface HeaderProps {
-    stats: Data;
-}
-
-interface Stats {
-    Team: string;
-    'K/D Ratio': string;
-    'K/R Ratio': string;
-    'Best Of': string;
-    Rounds: string;
-    Game: string;
-    'Second Half Score': string;
-    Headshots: string;
-    Kills: string;
-    Assists: string;
-    'Competition Id': string;
-    'Triple Kills': string;
-    Winner: string;
-    'Player Id': string;
-    'First Half Score': string;
-    Map: string;
-    Deaths: string;
-    'Headshots %': string;
-    'Overtime score': string;
-    'Quadro Kills': string;
-    'Penta Kills': string;
-    'Game Mode': string;
-    Score: string;
-    'Match Round': string;
-    MVPs: string;
-    'Match Id': string;
-    'Created At': string;
-    Nickname: string;
-    Result: string;
-    'Final Score': string;
-    Region: string;
-    'Updated At': string;
-}
-
-interface Item {
-    stats: Stats;
-}
-
-interface Data {
-    items: Item[];
-}
+import { StatsProps } from './interface';
 
 
-export default function Stats({stats}:HeaderProps) {
+
+export default function Stats({stats}:StatsProps) {
     const [avgKills,setAvgKills] = useState<number>(0)
     const [avgWin,setAvgWin] = useState<number>(0)
     const [avgHS,setAvgHS] = useState<number>(0)
@@ -93,16 +48,13 @@ export default function Stats({stats}:HeaderProps) {
             <div className="text-lg font-semibold text-center">
                 Last 20 Matches Statistics
             </div>
-            {/* <div className="flex justify-center flex-wrap md:flex-nowrap"> */}
             <div className="grid gap-4 grid-cols-2 md:grid-cols-2 lg:grid-cols-5">
                 <div className="rounded-xl border bg-card text-card-foreground shadow flex flex-col justify-center">
                     <div className='p-6 flex flex-row items-center justify-between space-y-0 pb-2'>
                         Win rate
                     </div>
-                    <div className='p-6 pt-0'>
-                        <div className='text-2xl font-bold'>
-                            {avgWin}%
-                        </div>
+                    <div className='p-6 pt-0 text-2xl font-bold'>
+                        {avgWin}%
                     </div>
                 </div>
 
@@ -110,10 +62,8 @@ export default function Stats({stats}:HeaderProps) {
                     <div className='p-6 flex flex-row items-center justify-between space-y-0 pb-2'>
                         Average Kills
                     </div>
-                    <div className='p-6 pt-0'>
-                        <div className='text-2xl font-bold'>
-                            {avgKills}
-                        </div>
+                    <div className='p-6 pt-0 text-2xl font-bold'>
+                        {avgKills}
                     </div>
                 </div>
                 
@@ -121,10 +71,8 @@ export default function Stats({stats}:HeaderProps) {
                     <div className='p-6 flex flex-row items-center justify-between space-y-0 pb-2'>
                         Average Headshots
                     </div>
-                    <div className='p-6 pt-0'>
-                        <div className='text-2xl font-bold'>
-                            {avgHS}%
-                        </div>
+                    <div className='p-6 pt-0 text-2xl font-bold'>
+                        {avgHS}%
                     </div>
                 </div>
                 
@@ -132,10 +80,8 @@ export default function Stats({stats}:HeaderProps) {
                     <div className='p-6 flex flex-row items-center justify-between space-y-0 pb-2'>
                         Average K/D
                     </div>
-                    <div className='p-6 pt-0'>
-                        <div className='text-2xl font-bold'>
-                            {avgKD}
-                        </div>
+                    <div className='p-6 pt-0 text-2xl font-bold'>
+                        {avgKD}
                     </div>
                 </div>
                 
@@ -143,10 +89,8 @@ export default function Stats({stats}:HeaderProps) {
                     <div className='p-6 flex flex-row items-center justify-between space-y-0 pb-2'>
                         Average K/R
                     </div>
-                    <div className='p-6 pt-0'>
-                        <div className='text-2xl font-bold'>
-                            {avgKR}
-                        </div>
+                    <div className='p-6 pt-0 text-2xl font-bold'>
+                        {avgKR}
                     </div>
                 </div>
             </div>
