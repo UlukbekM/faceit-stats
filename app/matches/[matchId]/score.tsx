@@ -53,7 +53,7 @@ export default function Score ({data,stats}:HeaderProps) {
 
     return (
         <div className='w-full lg:w-5/6'>
-            <div className='flex rounded-lg border justify-center p-5 space-x-4 md:space-x-8'>
+            <div className='flex rounded-lg border justify-center mx-2 p-5 space-x-4 md:space-x-8'>
                 <div className="text-lg font-semibold my-auto hidden md:flex">
                     {data.teams.faction1.name}
                 </div>

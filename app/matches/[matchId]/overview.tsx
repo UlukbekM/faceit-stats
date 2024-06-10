@@ -34,7 +34,7 @@ export default function Overview ({data,stats}:HeaderProps) {
     }
 
     return (
-        <div className='flex flex-col md:flex-row md:justify-between'>
+        <div className='flex flex-col md:flex-row md:justify-between mx-2'>
             <div className='space-y-4 basis-1/3'>
                 <div className='flex space-x-2 m-2 justify-center md:hidden md:m-0'>
                     <Avatar className='my-auto'>

@@ -52,18 +52,6 @@ export default function Scoreboard ({data,stats}:HeaderProps) {
         }
     }, [])
 
-    // const sortKills = () => {
-    //     const team1Kills = [...team1Stats].sort((a, b) => {
-    //         return parseInt(b.player_stats.Kills) - parseInt(a.player_stats.Kills);
-    //     });
-    //     setTeam1Stats(team1Kills);
-
-    //     const team2Kills = [...team2Stats].sort((a, b) => {
-    //         return parseInt(b.player_stats.Kills) - parseInt(a.player_stats.Kills);
-    //     });
-    //     setTeam2Stats(team2Kills);
-    // };
-
     const imageCheck = (avatar:string) => {
         const img = new Image();
         img.src = avatar;
@@ -124,7 +112,7 @@ export default function Scoreboard ({data,stats}:HeaderProps) {
 
     return (
         <div className='flex flex-col'>
-            <div className='rounded-lg border my-2'>
+            <div className='rounded-lg border m-2'>
                 <div className='flex space-x-4 my-2 mx-4'>
                     <Avatar className='my-auto h-8 w-8'>
                         <AvatarImage src={faction1Img} alt="@shadcn" />
@@ -313,7 +301,7 @@ export default function Scoreboard ({data,stats}:HeaderProps) {
                     </TableBody>
                 </Table>
             </div>
-            <div className='rounded-lg border my-2'>
+            <div className='rounded-lg border m-2'>
                 <div className='flex space-x-4 my-2 mx-4'>
                     <Avatar className='my-auto h-8 w-8'>
                         <AvatarImage src={faction2Img} alt="@shadcn" />
